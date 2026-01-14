@@ -53,6 +53,10 @@ export async function getScript(os: string): Promise<string> {
 export async function setEnv(): Promise<void> {
   process.env['fail_fast'] = await utils.getInput('fail-fast', false);
   process.env['GITHUB_TOKEN'] ??= await utils.getInput('github-token', false);
+  const forceCache = await utils.getInput('force-cache', false);
+  if (forceCache === 'true') {
+    process.env['use_package_cache'] = 'true';
+  }
 }
 
 /**

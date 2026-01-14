@@ -30,6 +30,10 @@ inputs:
   github-token:
     description: 'GitHub token to use for authentication.'
     default: ${{ github.token }}
+  force-cache:
+    description: 'Force the use of cached PHP builds instead of package manager installations.'
+    required: false
+    default: 'false'
 outputs:
   php-version:
     description: 'PHP version in semver format'

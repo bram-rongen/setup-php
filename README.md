@@ -470,6 +470,15 @@ Disable coverage for these reasons:
 - By default, `GITHUB_TOKEN` secret provided by GitHub Actions is used.
 - For GitHub Enterprise users, it is recommended to use a Personal Access Token (PAT).
 
+#### `force-cache` (optional)
+
+- Force the use of cached PHP builds instead of package manager installations.
+- Accepts `true` or `false`.
+- By default, `false` is used.
+- When set to `true`, setup-php will use pre-built cached PHP binaries on Linux instead of installing from package repositories.
+- This can be useful for ensuring consistent PHP builds across different environments or when package repositories are unavailable.
+- Only applicable on Linux (Ubuntu/Debian). Has no effect on macOS or Windows.
+
 ### Outputs
 
 #### `php-version`
