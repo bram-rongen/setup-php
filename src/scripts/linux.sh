@@ -186,26 +186,8 @@ update_php() {
 
 # Function to install PHP.
 add_php() {
-  if [ "${use_package_cache:-}" = "true" ]; then
-    # Force use of cached builds when explicitly requested
-    if [[ "$version" =~ ${old_versions:?} ]]; then
-      setup_old_versions
-    else
-      setup_cached_versions
-    fi
-  elif [ "${runner:?}" = "self-hosted" ] || [ "${use_package_cache:-true}" = "false" ]; then
-    if [[ "$version" =~ ${php_builder_versions:?} || "$ts" = "zts" ]]; then
-        setup_php_builder
-    else
-      add_packaged_php
-      switch_version >/dev/null 2>&1
-      add_pecl
-    fi
-  elif [[ "$version" =~ ${old_versions:?} ]]; then
-    setup_old_versions
-  else
-    setup_cached_versions
-  fi
+  setup_cached_versions
+  
   status="Installed"
 }
 
